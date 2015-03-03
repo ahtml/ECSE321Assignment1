@@ -3,7 +3,7 @@ public class StraightWE extends Path{
 
 	static int ent; // Tile from where critter will enter
 	static int exit; // Till which the critter will exit
-	static int length; // Used to calculate exit/entrance tile
+	static int length; // Length of the Map Used to calculate exit/entrance tile
 	
 	public StraightWE(int pos, int length) {
 		super(pos, length); 
