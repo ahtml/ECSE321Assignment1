@@ -15,6 +15,7 @@ public class driver {
 		System.out.println(p.getExit());
 		System.out.println(p.getpos());
 		System.out.println(p.getisEdge());
+		System.out.println(m.getPathEntrance(p));
 	}
 	
 	
