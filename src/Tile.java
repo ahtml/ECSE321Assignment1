@@ -8,5 +8,9 @@ public class Tile {
 		this.position = position;
 		
 	}
+	
+	public int getpos(){
+		return position;
+	}
 
 }
