@@ -1,9 +1,9 @@
 
 public class Map {
 	
-	public Tile grid [][]; // This will be an array holding the path and scenery info
-	public static int length;
-	int height;
+	private Tile grid [][]; // This will be an array holding the path and scenery info
+	private int length;
+	private int height;
 	
 	public Map(int length, int height){
 		
