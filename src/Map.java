@@ -1,11 +1,19 @@
 
 public class Map {
 	
-	public int grid [][]; // This will be an array holding the path and scenery info
+	public Tile grid [][]; // This will be an array holding the path and scenery info
+	public static int length;
+	int height;
 	
 	public Map(int length, int height){
 		
-		grid = new int [length][height];
+		this.length = length;
+		this.height = height;
+		grid = new Tile [length][height]; // This will create the grid to hold the tiles
+	}
+	
+	public int getLength(){
+		return length;
 	}
 
 }
