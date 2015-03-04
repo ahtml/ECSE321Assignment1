@@ -1,9 +1,11 @@
 
 public class StraightWE extends Path{
 
-	static int ent; // Tile from where critter will enter
-	static int exit; // Till which the critter will exit
-	static int length; // Length of the Map Used to calculate exit/entrance tile
+	int ent; // Tile from where critter will enter
+	int exit; // Till which the critter will exit
+	int length; // Length of the Map Used to calculate exit/entrance of tile
+	boolean isEdge; // If this tile is an entrance or exit or if it is part of path
+	boolean edgeType; // If it is an entrance or exit
 	
 	public StraightWE(int pos, int length) {
 		super(pos, length); 
@@ -27,6 +29,26 @@ public class StraightWE extends Path{
 	
 	public int getpos(){ // return position of tile
 		return pos;
+	}
+	
+	public void setisEdge(){ //setting that there it may be either an entrance or exit
+		isEdge = true;
+	}
+	
+	public boolean getisEdge(){ //know if its a regular path or either entrance or exit
+		return isEdge;
+	}
+	
+	public void setEntry(){ //setting tile as entry point
+		edgeType = true;
+	}
+	
+	public void setExit(){ //setting tile as exit point
+		edgeType = false;
+	}
+	
+	public boolean getedgeType(){
+		return edgeType;
 	}
 
 }
