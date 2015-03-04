@@ -6,6 +6,7 @@ public class StraightWE extends Path{
 	private int length; // Length of the Map Used to calculate exit/entrance of tile
 	private boolean isEdge; // If this tile is an entrance or exit or if it is part of path
 	private boolean edgeType; // If it is an entrance or exit
+	private boolean visited; // Check if the tile was visited during verification process
 	
 	public StraightWE(int pos, int length) {
 		super(pos, length); 
@@ -51,6 +52,14 @@ public class StraightWE extends Path{
 	
 	public boolean getedgeType(){
 		return edgeType;
+	}
+	
+	public void setVisted(boolean visited){
+		this.visited = visited;
+	}
+	
+	public boolean getVisited(){
+		return visited;
 	}
 
 }
