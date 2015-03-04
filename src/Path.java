@@ -1,7 +1,7 @@
 
 public class Path{
 	
-	public static int length; // this will be used to calculate the entrance and exit of the path
+	private int length; // this will be used to calculate the entrance and exit of the path
 	int pos;
 	
 	
