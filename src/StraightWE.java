@@ -41,10 +41,12 @@ public class StraightWE extends Path{
 	
 	public void setEntry(){ //setting tile as entry point
 		edgeType = true;
+		ent = pos;
 	}
 	
 	public void setExit(){ //setting tile as exit point
 		edgeType = false;
+		exit = pos;
 	}
 	
 	public boolean getedgeType(){
