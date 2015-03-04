@@ -15,5 +15,8 @@ public class Map {
 	public int getLength(){
 		return length;
 	}
-
+	
+	public int getPathEntrance(Path p){
+		return p.getEntrance();
+	}
 }
