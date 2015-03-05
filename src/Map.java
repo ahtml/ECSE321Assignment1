@@ -4,7 +4,7 @@ import java.util.LinkedList;
 
 public class Map {
 	
-	private Tile grid [][]; // This will be an array holding the path and scenery info
+	private Path grid [][]; // This will be an array holding the path and scenery info
 	private int length;
 	private int width;
 	LinkedList <Path> temp = new LinkedList<Path>(); // Will hold all the path before reordering
@@ -15,7 +15,7 @@ public class Map {
 		
 		this.length = length;
 		this.width = width;
-		grid = new Tile [length][width]; // This will create the grid to hold the tiles
+		grid = new Path [length][width]; // This will create the grid to hold the tiles
 		
 	}
 	
@@ -77,22 +77,41 @@ public class Map {
 		}
 		
 		if(entryExit.getFirst().getedgeType()==true){
-			previousPos=entryExit.getFirst().getpos();
-			nextExit=entryExit.getFirst().getExit();
-			entryExit.getFirst().setVisited(true);
+			previousPos=entryExit.getFirst().getpos();// position of the entry point
+			// it is called the previouspos because it is compared to the next tile
+			nextExit=entryExit.getFirst().getExit(); // finding where the next tile should be 
+			entryExit.getFirst().setVisited(true); // setting the entry point as being visted
 		}
 		else{
 			previousPos=entryExit.getLast().getpos();
 			nextExit=entryExit.getLast().getExit();
+			entryExit.getLast().setVisited(true);
 		}
 		
 		while(!error || !endReached){
-			currentEnt = grid[calculaterow(nextExit)][calculatecolumn(nextExit)].getpos();
+			currentEnt = grid[calculaterow(nextExit)][calculatecolumn(nextExit)].getEntrance(); // entrace of current tile
+			grid[calculaterow(nextExit)][calculatecolumn(nextExit)].setVisited(true);
 			if(previousPos!=currentEnt){
+				// If both the previous tile's exiting direction is not towards the current tile, then the path is not connected
 				error=true;
 			}
+			else if(grid[calculaterow(nextExit)][calculatecolumn(nextExit)].getedgeType()==false){
+				// Once the exit point has been reached ... 
+				endReached=true;
+			}
+			else{
+				// move to next tile in path
+				previousPos = nextExit;
+				nextExit = grid[calculaterow(previousPos)][calculatecolumn(previousPos)].getExit();
+			}
 		}
-		return false;
+		if(error==false){
+			return true;
+		}
+		else{
+			return false;
+		}
+		
 	}
 	
 	public void addPathPiece(Path p){ 
