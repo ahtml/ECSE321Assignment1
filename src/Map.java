@@ -20,11 +20,15 @@ public class Map {
 	}
 	
 	public String verify(Map m){
-		
-		return "Verified";
+		if(entryExitPoints(m)==false){
+			return "There is an incorrect number of entry or exit points";
+		}
+		else{
+			return "Verified";
+		}
 	}
 	
-	public boolean entrExitPoints(Map m){
+	public boolean entryExitPoints(Map m){
 		int entrycount = 0; // Check how many entry points there are
 		int exitcount = 0; // Check how many exit points there are
 		Iterator <Path> iterator = temp.iterator();
@@ -32,20 +36,28 @@ public class Map {
 			if(iterator.next().getisEdge()==true && iterator.next().getedgeType()==true){
 				// If the Path is and entry point type ...
 				entrycount++;
+				entryExit.add(iterator.next());
 			}
 			else if(iterator.next().getisEdge()==true && iterator.next().getedgeType()==false){
 				// If the Path is and entry point type ...
 				exitcount++;
+				entryExit.add(iterator.next());
 			}
 		}
-		if(entrycount>1 || exitcount>1){
-			//if there is more than one entry of exit point...
+		if(entrycount>1 || exitcount>1 || entrycount==0 || exitcount==0){
+			//if there is more than one entry of exit point or not enough entry or exit points...
+			entryExit.clear();
 			return false;
 		}
 		else{
 			// Verification for entry and exit point successful
 			return true;
 		}
+	}
+	
+	public void addPathPiece(Path p){ 
+		// add path p to temp linked list
+		temp.add(p);
 	}
 	
 	public int getLength(){
