@@ -6,16 +6,16 @@ public class Map {
 	
 	private Tile grid [][]; // This will be an array holding the path and scenery info
 	private int length;
-	private int height;
+	private int width;
 	LinkedList <Path> temp = new LinkedList<Path>(); // Will hold all the path before reordering
 	LinkedList <Path> finalPath = new LinkedList<Path>(); // will hold the final path
 	LinkedList <Path> entryExit = new LinkedList<Path>(); // temporarily hold entry and exit points
 	
-	public Map(int length, int height){
+	public Map(int length, int width){
 		
 		this.length = length;
-		this.height = height;
-		grid = new Tile [length][height]; // This will create the grid to hold the tiles
+		this.width = width;
+		grid = new Tile [length][width]; // This will create the grid to hold the tiles
 		
 	}
 	
@@ -35,7 +35,7 @@ public class Map {
 		Path tempP;
 		while(iterator.hasNext() && entrycount<=1 && exitcount<=1){
 			tempP = iterator.next();
-			System.out.println(tempP.pos);
+			// System.out.println(tempP.pos); // debugging purposes
 			if(tempP.getisEdge()==true && tempP.getedgeType()==true){
 				// If the Path is and entry point type ...
 				entrycount++;
@@ -56,8 +56,15 @@ public class Map {
 			// Verification for entry and exit point successful
 			temp.remove(entryExit.getFirst());
 			temp.remove(entryExit.getLast());
+			
 			return true;
 		}
+	}
+	
+	public boolean isConnected(Map m){
+		boolean connected = true;
+		
+		return false;
 	}
 	
 	public void addPathPiece(Path p){ 
@@ -72,6 +79,14 @@ public class Map {
 	
 	public int getLength(){
 		return length;
+	}
+	
+	public int calculaterow(int pos){// calculate row index
+		return pos/width;
+	}
+	
+	public int calculatecolumn(int pos){// calculate column index
+		return pos%width;
 	}
 	
 }
