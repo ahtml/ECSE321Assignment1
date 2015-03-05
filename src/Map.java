@@ -51,6 +51,8 @@ public class Map {
 		}
 		else{
 			// Verification for entry and exit point successful
+			temp.remove(entryExit.getFirst());
+			temp.remove(entryExit.getLast());
 			return true;
 		}
 	}
@@ -58,6 +60,11 @@ public class Map {
 	public void addPathPiece(Path p){ 
 		// add path p to temp linked list
 		temp.add(p);
+	}
+	
+	public void removePathPiece(Path p){
+		// remove path p from temp linked list
+		temp.remove(p);
 	}
 	
 	public int getLength(){
