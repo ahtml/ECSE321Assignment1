@@ -3,16 +3,17 @@ public class StraightNS extends Path {
 	
 	private int ent; // Tile from where critter will enter
 	private int exit; // Till which the critter will exit
-	private int length; // Length of the Map Used to calculate exit/entrance of tile
+	private int width; // width of the Map Used to calculate exit/entrance of tile
 	private boolean isEdge; // If this tile is an entrance or exit or if it is part of path
 	private boolean edgeType; // If it is an entrance or exit
 	private boolean visited; // Check if the tile was visited during verification process
+	private int pos;
 	
-	public StraightNS(int pos, int length) {
-		super(pos);
-		this.length = length;
-		ent = pos - length; // calculate entrance
-		exit = pos + length; // calculate exit
+	public StraightNS(int pos, int width) {
+		this.pos = pos;
+		this.width = width;
+		ent = pos - width; // calculate entrance
+		exit = pos + width; // calculate exit
 	}
 
 	public void rotate() { // Rotate piece

@@ -4,18 +4,23 @@ import java.util.LinkedList;
 
 public class Map {
 	
-	private Path grid [][]; // This will be an array holding the path and scenery info
-	private int length;
+	private Path grid [][]; // This will be an array holding the path
+	private int height;
 	private int width;
 	LinkedList <Path> temp = new LinkedList<Path>(); // Will hold all the path before reordering
 	LinkedList <Path> finalPath = new LinkedList<Path>(); // will hold the final path
 	LinkedList <Path> entryExit = new LinkedList<Path>(); // temporarily hold entry and exit points
 	
-	public Map(int length, int width){
+	public Map(int height, int width){
 		
-		this.length = length;
+		this.height = height;
 		this.width = width;
-		grid = new Path [length][width]; // This will create the grid to hold the tiles
+		grid = new Path [height][width]; // This will create the grid to hold the tiles
+		/*
+		StraightWE p10 = new StraightWE(5,height);
+		grid[0][5] = p10;
+		System.out.println(p10.getpos());
+		*/
 		
 	}
 	
@@ -78,12 +83,23 @@ public class Map {
 			tempP = iterator.next();
 			grid[calculaterow(tempP.getpos())][calculatecolumn(tempP.getpos())] = tempP;
 		}
+		/*
+		System.out.println("Checking Grid");
+		for(int i=0;i<grid.length;i++){
+			for(int j=0;j<grid.length;j++){
+				if(grid[i][j]!=null){
+					System.out.println(i+" "+j+" "+" "+grid[i][j].getpos()+" "+grid[i][j].getEntrance()+ " "+grid[i][j].getExit());
+				}
+			}
+		}
+		*/
+		
 		
 		if(entryExit.getFirst().getedgeType()==true){
 			previousPos=entryExit.getFirst().getpos();// position of the entry point
 			// it is called the previouspos because it is compared to the next tile
 			nextExit=entryExit.getFirst().getExit(); // finding where the next tile should be 
-			entryExit.getFirst().setVisited(true); // setting the entry point as being visted
+			entryExit.getFirst().setVisited(true); // setting the entry point as being visited
 		}
 		else{
 			previousPos=entryExit.getLast().getpos();
@@ -91,14 +107,22 @@ public class Map {
 			entryExit.getLast().setVisited(true);
 		}
 		
-		while(!error || !endReached){
-			currentEnt = grid[calculaterow(nextExit)][calculatecolumn(nextExit)].getEntrance(); // entrace of current tile
+		while(!error && !endReached){
+			
+			// System.out.println(nextExit);
+			// System.out.println(calculaterow(nextExit));
+			// System.out.println(calculatecolumn(nextExit));
+			// System.out.println(grid[0][0].getpos());
+			//System.out.println(grid[calculaterow(nextExit)][calculatecolumn(nextExit)].getpos());
+			
+			currentEnt = grid[calculaterow(nextExit)][calculatecolumn(nextExit)].getEntrance(); // entrance of current tile
 			grid[calculaterow(nextExit)][calculatecolumn(nextExit)].setVisited(true);
+			// System.out.println(previousPos+" "+currentEnt);
 			if(previousPos!=currentEnt){
 				// If both the previous tile's exiting direction is not towards the current tile, then the path is not connected
 				error=true;
 			}
-			else if(grid[calculaterow(nextExit)][calculatecolumn(nextExit)].getedgeType()==false){
+			else if(grid[calculaterow(nextExit)][calculatecolumn(nextExit)].getisEdge()==true&&grid[calculaterow(nextExit)][calculatecolumn(nextExit)].getedgeType()==false){
 				// Once the exit point has been reached ... 
 				endReached=true;
 			}
@@ -107,12 +131,13 @@ public class Map {
 				previousPos = nextExit;
 				nextExit = grid[calculaterow(previousPos)][calculatecolumn(previousPos)].getExit();
 			}
+			//System.out.println(error+" "+endReached);
 		}
 		if(error==false){
-			return true;
+			return false;
 		}
 		else{
-			return false;
+			return true;
 		}
 		
 	}
@@ -127,8 +152,12 @@ public class Map {
 		temp.remove(p);
 	}
 	
-	public int getLength(){
-		return length;
+	public int getHeight(){
+		return height;
+	}
+	
+	public int getWidth(){
+		return width;
 	}
 	
 	public int calculaterow(int pos){// calculate row index

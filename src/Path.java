@@ -1,8 +1,7 @@
 
-public abstract class Path extends Tile{
+public abstract class Path{
 	
 	private int length; // this will be used to calculate the entrance and exit of the path
-	int pos;
 	
 	/*
 	 * Naming all the subclasses is done by using one direction using compass headings
@@ -10,8 +9,7 @@ public abstract class Path extends Tile{
 	 * Instead of creating another subclass called StraightEW for the opposite direction, have a method called rotate which switches the
 	 * entrance and exit variables
 	 */
-	public Path(int pos){
-		super(pos);
+	public Path(){
 	}
 	
 	// used abstract methods so that Map can call upon Path and the method will be chosen in the 

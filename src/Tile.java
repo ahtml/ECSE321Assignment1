@@ -8,5 +8,5 @@ public class Tile {
 		this.position = position;
 		
 	}
-
+	
 }
