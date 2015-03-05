@@ -9,7 +9,8 @@ public class TurnWS extends Path {
 	private boolean visited; // Check if the tile was visited during verification process
 	
 	public TurnWS(int pos, int length) {
-		super(pos,length);
+		super(pos);
+		this.length = length;
 		ent = pos -1; // calculate entrance
 		exit = pos + length; // calculate exit
 	}

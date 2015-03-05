@@ -9,7 +9,8 @@ public class TurnEN extends Path {
 	private boolean visited; // Check if the tile was visited during verification process
 	
 	public TurnEN(int pos, int length) {
-		super(pos,length);
+		super(pos);
+		this.length = length;
 		ent = pos + 1; // calculate entrance
 		exit = pos - length; // calculate exit
 	}

@@ -9,7 +9,8 @@ public class StraightNS extends Path {
 	private boolean visited; // Check if the tile was visited during verification process
 	
 	public StraightNS(int pos, int length) {
-		super(pos, length);
+		super(pos);
+		this.length = length;
 		ent = pos - length; // calculate entrance
 		exit = pos + length; // calculate exit
 	}

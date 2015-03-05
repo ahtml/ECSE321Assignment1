@@ -56,7 +56,7 @@ public class Map {
 			// Verification for entry and exit point successful
 			temp.remove(entryExit.getFirst());
 			temp.remove(entryExit.getLast());
-			
+			grid[calculaterow(entryExit.getFirst().getpos())][calculatecolumn(entryExit.getFirst().getpos())] = entryExit.getFirst();
 			return true;
 		}
 	}
