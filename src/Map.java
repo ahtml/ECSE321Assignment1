@@ -23,6 +23,9 @@ public class Map {
 		if(entryExitPoints(m)==false){
 			return "There is an incorrect number of entry or exit points";
 		}
+		if(isConnected(m)==false){
+			return "The path is not connected";
+		}
 		else{
 			return "Verified";
 		}
