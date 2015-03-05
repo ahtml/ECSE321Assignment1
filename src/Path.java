@@ -20,5 +20,6 @@ public abstract class Path extends Tile{
 	abstract public void setEntry();
 	abstract public void setExit();
 	abstract public boolean getedgeType();
+	abstract public void setVisited(boolean visited);
 
 }

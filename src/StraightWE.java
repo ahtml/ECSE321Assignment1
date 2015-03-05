@@ -55,7 +55,7 @@ public class StraightWE extends Path{
 		return edgeType;
 	}
 	
-	public void setVisted(boolean visited){
+	public void setVisited(boolean visited){
 		this.visited = visited;
 	}
 	

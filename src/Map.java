@@ -57,13 +57,41 @@ public class Map {
 			temp.remove(entryExit.getFirst());
 			temp.remove(entryExit.getLast());
 			grid[calculaterow(entryExit.getFirst().getpos())][calculatecolumn(entryExit.getFirst().getpos())] = entryExit.getFirst();
+			grid[calculaterow(entryExit.getLast().getpos())][calculatecolumn(entryExit.getLast().getpos())] = entryExit.getLast();
 			return true;
 		}
 	}
 	
 	public boolean isConnected(Map m){
-		boolean connected = true;
+		boolean connected = true; // Keep track if two Path tiles are connected
+		int previousPos;
+		int nextExit;
+		int currentEnt;
+		boolean error = false; // if there was an error
+		boolean endReached = false; // If reached the exit point
+		Iterator <Path> iterator = temp.iterator();
+		Path tempP;
+		while(iterator.hasNext()){ // Putting all the remaining path values into the Grid
+			tempP = iterator.next();
+			grid[calculaterow(tempP.getpos())][calculatecolumn(tempP.getpos())] = tempP;
+		}
 		
+		if(entryExit.getFirst().getedgeType()==true){
+			previousPos=entryExit.getFirst().getpos();
+			nextExit=entryExit.getFirst().getExit();
+			entryExit.getFirst().setVisited(true);
+		}
+		else{
+			previousPos=entryExit.getLast().getpos();
+			nextExit=entryExit.getLast().getExit();
+		}
+		
+		while(!error || !endReached){
+			currentEnt = grid[calculaterow(nextExit)][calculatecolumn(nextExit)].getpos();
+			if(previousPos!=currentEnt){
+				error=true;
+			}
+		}
 		return false;
 	}
 	
