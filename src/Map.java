@@ -7,9 +7,9 @@ public class Map {
 	private Tile grid [][]; // This will be an array holding the path and scenery info
 	private int length;
 	private int height;
-	LinkedList <Path> temp = new LinkedList(); // Will hold all the path before reordering
-	LinkedList <Path> finalPath = new LinkedList(); // will hold the final path
-	LinkedList <Path> entryExit = new LinkedList(); // temporarily hold entry and exit points
+	LinkedList <Path> temp = new LinkedList<Path>(); // Will hold all the path before reordering
+	LinkedList <Path> finalPath = new LinkedList<Path>(); // will hold the final path
+	LinkedList <Path> entryExit = new LinkedList<Path>(); // temporarily hold entry and exit points
 	
 	public Map(int length, int height){
 		
@@ -32,16 +32,19 @@ public class Map {
 		int entrycount = 0; // Check how many entry points there are
 		int exitcount = 0; // Check how many exit points there are
 		Iterator <Path> iterator = temp.iterator();
+		Path tempP;
 		while(iterator.hasNext() && entrycount<=1 && exitcount<=1){
-			if(iterator.next().getisEdge()==true && iterator.next().getedgeType()==true){
+			tempP = iterator.next();
+			System.out.println(tempP.pos);
+			if(tempP.getisEdge()==true && tempP.getedgeType()==true){
 				// If the Path is and entry point type ...
 				entrycount++;
-				entryExit.add(iterator.next());
+				entryExit.add(tempP);
 			}
-			else if(iterator.next().getisEdge()==true && iterator.next().getedgeType()==false){
+			else if(tempP.getisEdge()==true && tempP.getedgeType()==false){
 				// If the Path is and entry point type ...
 				exitcount++;
-				entryExit.add(iterator.next());
+				entryExit.add(tempP);
 			}
 		}
 		if(entrycount>1 || exitcount>1 || entrycount==0 || exitcount==0){
