@@ -24,11 +24,11 @@ public class Map {
 		
 	}
 	
-	public String verify(Map m){
-		if(entryExitPoints(m)==false){
+	public String verify(){
+		if(entryExitPoints()==false){
 			return "There is an incorrect number of entry or exit points";
 		}
-		if(isConnected(m)==false){
+		if(isConnected()==false){
 			return "The path is not connected";
 		}
 		else{
@@ -36,7 +36,7 @@ public class Map {
 		}
 	}
 	
-	public boolean entryExitPoints(Map m){
+	public boolean entryExitPoints(){
 		int entrycount = 0; // Check how many entry points there are
 		int exitcount = 0; // Check how many exit points there are
 		Iterator <Path> iterator = temp.iterator();
@@ -70,7 +70,17 @@ public class Map {
 		}
 	}
 	
-	public boolean isConnected(Map m){
+	public boolean connected(Path p1,Path p2){
+		// Checks if p1 and p2 are connected
+		if(p1.getExit()==p2.getpos()){
+			return true;
+		}
+		else{
+			return false;
+		}
+	}
+	
+	public boolean isConnected(){
 		boolean connected = true; // Keep track if two Path tiles are connected
 		int previousPos;
 		int nextExit;
