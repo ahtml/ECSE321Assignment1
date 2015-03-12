@@ -24,5 +24,6 @@ public abstract class Path{
 	abstract public void setExit();
 	abstract public boolean getedgeType();
 	abstract public void setVisited(boolean visited);
+	abstract public void setParameters(int pos);
 
 }
