@@ -10,10 +10,9 @@ public class StraightNS extends Path {
 	private int pos;
 	
 	public StraightNS(int pos, int width) {
-		this.pos = pos;
 		this.width = width;
-		ent = pos - width; // calculate entrance
-		exit = pos + width; // calculate exit
+		setParameters(pos);
+		
 	}
 
 	public void rotate() { // Rotate piece
@@ -63,4 +62,13 @@ public class StraightNS extends Path {
 	public boolean getVisited(){
 		return visited;
 	}
+	
+	public void setParameters(int pos){
+		
+		this.pos = pos;
+		ent = pos - width; // calculate entrance
+		exit = pos + width; // calculate exit
+		
+	}
+
 }

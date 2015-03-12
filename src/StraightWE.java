@@ -10,10 +10,9 @@ public class StraightWE extends Path{
 	private int pos;
 	
 	public StraightWE(int pos, int width) {
-		this.pos = pos;
+		setParameters(pos);
 		this.width = width;
-		ent = pos-1; // calculate entrance
-		exit = pos+1; // Calculate exit
+		
 	}
 	
 	public void rotate() { // Rotate piece
@@ -62,6 +61,14 @@ public class StraightWE extends Path{
 	
 	public boolean getVisited(){
 		return visited;
+	}
+	
+	public void setParameters(int pos){
+		
+		this.pos = pos;
+		ent = pos-1; // calculate entrance
+		exit = pos+1; // Calculate exit
+		
 	}
 
 }

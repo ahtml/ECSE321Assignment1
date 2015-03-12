@@ -10,10 +10,10 @@ public class TurnNW extends Path {
 	private int pos;
 	
 	public TurnNW(int pos, int width) {
-		this.pos = pos;
+		
 		this.width = width;
-		ent = pos -width; // calculate exit
-		exit = pos -1; // calculate exit
+		setParameters(pos);
+		
 	}
 	
 	public void rotate() { // Rotate piece
@@ -63,5 +63,14 @@ public class TurnNW extends Path {
 	public boolean getVisited(){
 		return visited;
 	}
+	
+	public void setParameters(int pos){
+		
+		this.pos = pos;
+		ent = pos - width; // calculate exit
+		exit = pos -1; // calculate exit
+		
+	}
+
 
 }
