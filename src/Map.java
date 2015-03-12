@@ -10,6 +10,8 @@ public class Map {
 	LinkedList <Path> temp = new LinkedList<Path>(); // Will hold all the path before reordering
 	LinkedList <Path> finalPath = new LinkedList<Path>(); // will hold the final path
 	LinkedList <Path> entryExit = new LinkedList<Path>(); // temporarily hold entry and exit points
+	Path entryPoint;
+	Path exitPoint;
 	
 	public Map(int height, int width){
 		
@@ -39,6 +41,10 @@ public class Map {
 	public boolean entryExitPoints(){
 		int entrycount = 0; // Check how many entry points there are
 		int exitcount = 0; // Check how many exit points there are
+		Path tempEnt = null;
+		Path tempExit = null;
+		entryPoint = null;
+		exitPoint = null;
 		Iterator <Path> iterator = temp.iterator();
 		Path tempP;
 		while(iterator.hasNext() && entrycount<=1 && exitcount<=1){
@@ -47,23 +53,21 @@ public class Map {
 			if(tempP.getisEdge()==true && tempP.getedgeType()==true){
 				// If the Path is and entry point type ...
 				entrycount++;
-				entryExit.add(tempP);
+				tempEnt = tempP;
 			}
 			else if(tempP.getisEdge()==true && tempP.getedgeType()==false){
 				// If the Path is and entry point type ...
 				exitcount++;
-				entryExit.add(tempP);
+				tempExit = null;
 			}
 		}
 		if(entrycount>1 || exitcount>1 || entrycount==0 || exitcount==0){
 			//if there is more than one entry of exit point or not enough entry or exit points...
-			entryExit.clear();
 			return false;
 		}
 		else{
 			// Verification for entry and exit point successful
-			temp.remove(entryExit.getFirst());
-			temp.remove(entryExit.getLast());
+			
 			grid[calculaterow(entryExit.getFirst().getpos())][calculatecolumn(entryExit.getFirst().getpos())] = entryExit.getFirst();
 			grid[calculaterow(entryExit.getLast().getpos())][calculatecolumn(entryExit.getLast().getpos())] = entryExit.getLast();
 			return true;
