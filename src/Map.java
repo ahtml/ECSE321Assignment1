@@ -72,7 +72,9 @@ public class Map {
 	
 	public boolean connected(Path p1,Path p2){
 		// Checks if p1 and p2 are connected
-		if(p1.getExit()==p2.getpos()){
+		if(p1.getExit()==p2.getpos()&&p1.getpos()==p2.getEntrance()){
+			// If the exit of the first tile is equal to the position of the second tile
+			// AND if the entrance of the second tile is equal to the position of the first tile
 			return true;
 		}
 		else{
