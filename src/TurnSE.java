@@ -19,7 +19,7 @@ public class TurnSE extends Path {
 	public void rotate() { // Rotate piece
 		int temp = ent;
 		ent = exit;
-		exit = ent; 
+		exit = temp; 
 	}
 	
 	public int getEntrance(){ // return entrance of tile

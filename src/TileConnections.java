@@ -18,8 +18,8 @@ public class TileConnections {
 		straightWE = new StraightWE(2,10);
 		straightEW = new StraightWE(3,10);
 		straightEW.rotate();
-		straightNS = new StraightNS(12,10);
-		straightSN = new StraightNS(13,10);
+		straightNS = new StraightNS(3,10);
+		straightSN = new StraightNS(3,10);
 		straightSN.rotate();
 	}
 

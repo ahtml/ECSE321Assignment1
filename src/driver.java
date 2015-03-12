@@ -23,7 +23,7 @@ public class driver {
 		m.addPathPiece(e2);
 		m.addPathPiece(e3);
 		
-		if(m.entryExitPoints(m)==false){
+		if(m.entryExitPoints()==false){
 			System.out.println("Case 1: pass");
 		}
 		
@@ -34,7 +34,7 @@ public class driver {
 		// removing the extra entry point
 		m.removePathPiece(e3);
 		
-		if(m.entryExitPoints(m)==true){
+		if(m.entryExitPoints()==true){
 			System.out.println("Case 2: pass");
 		}
 		
@@ -71,17 +71,17 @@ public class driver {
 
 		// System.out.println(m1.verify(m1));
 		
-		if(m1.verify(m1)=="Verified"){
+		m1.verify();
+		if(m1.verify()=="Verified"){
 			System.out.println("Case 3: pass");
 		}
 		
 		p5.rotate();
 		m1.addPathPiece(p5);
 		
-		if(m1.verify(m1)=="The path is not connected"){
+		if(m1.verify()=="The path is not connected"){
 			System.out.println("Case 4: pass");
 		}
-		
 		
 	}	
 	
