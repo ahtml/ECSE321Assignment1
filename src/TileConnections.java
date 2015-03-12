@@ -11,6 +11,14 @@ public class TileConnections {
 	StraightNS straightNS;
 	StraightWE straightEW;
 	StraightNS straightSN;
+	TurnEN turnEN;
+	TurnEN turnNE;
+	TurnNW turnNW;
+	TurnNW turnWN;
+	TurnSE turnSE;
+	TurnSE turnES;
+	TurnWS turnWS;
+	TurnWS turnSW;
 	
 	@Before
 	public void setUp() throws Exception {
@@ -21,6 +29,7 @@ public class TileConnections {
 		straightNS = new StraightNS(3,10);
 		straightSN = new StraightNS(3,10);
 		straightSN.rotate();
+		
 	}
 
 	@Test
@@ -33,7 +42,11 @@ public class TileConnections {
 		// System.out.println(straightEW.getEntrance()+" "+straightEW.getExit());
 		assertTrue("Straright WE at "+straightWE.getExit()+" is not equal to Straight EW at " + straightEW.getEntrance(),m.connected(straightWE,straightEW));
 		
-		// fail("Not yet implemented");
+		assertFalse("Straright WE at "+straightWE.getExit()+" is not equal to Straight EW at " + straightNS.getEntrance(),m.connected(straightWE, straightNS));
+		assertFalse("Straright WE at "+straightWE.getExit()+" is not equal to Straight EW at " + straightSN.getEntrance(),m.connected(straightWE, straightSN));
+		assertFalse("Straright WE at "+straightWE.getExit()+" is not equal to Straight EW at " + straightNS.getEntrance(),m.connected(straightNS, straightWE));
+		assertFalse("Straright WE at "+straightWE.getExit()+" is not equal to Straight EW at " + straightSN.getEntrance(),m.connected(straightSN, straightWE));
+		
 	}
 
 }
