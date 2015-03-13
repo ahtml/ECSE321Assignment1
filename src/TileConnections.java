@@ -29,6 +29,18 @@ public class TileConnections {
 		straightNS = new StraightNS(3,10);
 		straightSN = new StraightNS(3,10);
 		straightSN.rotate();
+		turnEN = new TurnEN(3,10);
+		turnNE = new TurnEN(3,10);
+		turnNE.rotate();
+		turnNW = new TurnNW(3,10);
+		turnWN = new TurnNW(3,10);
+		turnWN.rotate();
+		turnSE = new TurnSE(3,10);
+		turnES = new TurnSE(3,10);
+		turnES.rotate();
+		turnWS = new TurnWS(3,10);
+		turnSW = new TurnWS(3,10);
+		turnSW.rotate();
 		
 	}
 
@@ -41,12 +53,17 @@ public class TileConnections {
 		straightEW.rotate();
 		// System.out.println(straightEW.getEntrance()+" "+straightEW.getExit());
 		assertTrue("Straright WE at "+straightWE.getExit()+" is not equal to Straight EW at " + straightEW.getEntrance(),m.connected(straightWE,straightEW));
+		straightEW.rotate();
 		
 		assertFalse("Straright WE at "+straightWE.getExit()+" is not equal to Straight EW at " + straightNS.getEntrance(),m.connected(straightWE, straightNS));
 		assertFalse("Straright WE at "+straightWE.getExit()+" is not equal to Straight EW at " + straightSN.getEntrance(),m.connected(straightWE, straightSN));
 		assertFalse("Straright WE at "+straightWE.getExit()+" is not equal to Straight EW at " + straightNS.getEntrance(),m.connected(straightNS, straightWE));
 		assertFalse("Straright WE at "+straightWE.getExit()+" is not equal to Straight EW at " + straightSN.getEntrance(),m.connected(straightSN, straightWE));
+		// Works up till here
 		
+		assertTrue("Straright WE at "+straightWE.getExit()+" is not equal to Turn WS at " + turnWS.getEntrance(),m.connected(straightWE, turnWS));
+		assertFalse("Straright WE at "+straightWE.getExit()+" is not equal to Turn WS at " + turnWS.getEntrance(),m.connected(turnWS, straightWE));
+		assertFalse("Straright WE at "+straightWE.getExit()+" is not equal to Turn EN at " + turnEN.getEntrance(),m.connected(straightWE, turnES));
 	}
 
 }

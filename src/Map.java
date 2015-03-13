@@ -56,9 +56,9 @@ public class Map {
 				tempEnt = tempP;
 			}
 			else if(tempP.getisEdge()==true && tempP.getedgeType()==false){
-				// If the Path is and entry point type ...
+				// If the Path is and exit point type ...
 				exitcount++;
-				tempExit = null;
+				tempExit = tempP;
 			}
 		}
 		if(entrycount>1 || exitcount>1 || entrycount==0 || exitcount==0){
@@ -67,9 +67,8 @@ public class Map {
 		}
 		else{
 			// Verification for entry and exit point successful
-			
-			grid[calculaterow(entryExit.getFirst().getpos())][calculatecolumn(entryExit.getFirst().getpos())] = entryExit.getFirst();
-			grid[calculaterow(entryExit.getLast().getpos())][calculatecolumn(entryExit.getLast().getpos())] = entryExit.getLast();
+			entryPoint = tempEnt;
+			exitPoint = tempExit;
 			return true;
 		}
 	}

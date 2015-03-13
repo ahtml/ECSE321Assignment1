@@ -43,11 +43,13 @@ public class TurnNW extends Path {
 	}
 	
 	public void setEntry(){ //setting tile as entry point
+		setisEdge();
 		edgeType = true;
 		ent = pos;
 	}
 	
 	public void setExit(){ //setting tile as exit point
+		setisEdge();
 		edgeType = false;
 		exit = pos;
 	}
