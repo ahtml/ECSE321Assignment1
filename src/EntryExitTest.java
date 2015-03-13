@@ -48,6 +48,17 @@ public class EntryExitTest {
 		assertTrue("Case 3 did not work",m2.entryExitPoints());
 		// worked
 		
+		// Case 4 (Failure): Only entry point
+		m2.removePathPiece(exit1);
+		assertFalse("Case 4 did not work",m2.entryExitPoints());
+		// worked
+		
+		// Case 5 (Failure): Only exit point
+		m2.removePathPiece(ent2);
+		m2.addPathPiece(exit2);
+		assertFalse("Case 5 did not work",m2.entryExitPoints());
+		// worked
+		
 	}
 
 }
