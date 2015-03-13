@@ -46,6 +46,7 @@ public class EntryExitTest {
 		m2.removePathPiece(ent1);
 		m2.removePathPiece(exit2);
 		assertTrue("Case 3 did not work",m2.entryExitPoints());
+		// worked
 		
 	}
 
